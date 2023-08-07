@@ -1,0 +1,31 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'javax.inject:javax.inject:1'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // Added to control timeouts request going out of this application
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+    // Added for processing getter, setters, data etc.
+    compileOnly('org.projectlombok:lombok')
+    annotationProcessor('org.projectlombok:lombok:1.18.22')
+    // Added for retry
+    implementation 'org.springframework.retry:spring-retry:2.0.2'
+    implementation 'org.springframework:spring-aspects'
+}
+
+test {
+    useJUnitPlatform()
+}
